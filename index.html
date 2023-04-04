@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Manipulation</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script>
+        // DATA PROVIDED 
+        const students = [
+            {
+                "id": 1001,
+                "name": "Jason",
+                "address": "Sumpong",
+                "age": 20,
+                "gender": "Male"
+            },
+            {
+                "id": 1002,
+                "name": "Mark",
+                "address": "Casisang",
+                "age": 20,
+                "gender": "Male"
+            },
+            {
+                "id": 1003,
+                "name": "Angel",
+                "address": "Aglayan",
+                "age": 20,
+                "gender": "Female"
+            }
+        ];
+        // execute when DOM is ready
+        $(document).ready(function() {
+
+            // get the input and bind a click event
+            $("input[type='button']").click(function () {
+                // alert('hello world!');
+
+                // getting the table
+                const table = $('#myTable > tbody');
+                
+                // looping through the data
+                for (const student of students) {
+                    // destructuring the properties
+                    const { id, name, address, age, gender } = student; 
+                    const data = `
+                    <tr>
+                        <td>${id}</td>
+                        <td>${name}</td>
+                        <td>${address}</td>
+                        <td>${age}</td>
+                        <td>${gender}</td>
+                    </tr>
+                    `;
+                    table.append(data);
+                }
+            });
+
+        });
+    </script>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="Populate Table">
+    <table id="myTable">
+        <tr>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Gender</th>
+        </tr>
+    </table>
+
+</body>
+
+</html>
